@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->  
+<mapper namespace="SpringBoot_jsp.springbootJsp.mapper.pastebinmapper">
+
+	<!-- insert --> 
+	<insert id = "insert" parameterType="SpringBoot_jsp.springbootJsp.pojo.pastebin">
+		INSERT INTO pastebin(codetype,password,content,is_secret,email) VALUES (#{codetype},#{password},#{content},#{is_secret},#{email});
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id" >
+			SELECT LAST_INSERT_ID();
+		</selectKey>
+	</insert>
+	
+	<!-- find -->
+		
+	<select id="select" resultType="SpringBoot_jsp.springbootJsp.pojo.pastebin">
+		SELECT codetype,password,content,is_secret FROM pastebin where id=#{id};
+	</select>
+
+	<select id="select_email" resultType="SpringBoot_jsp.springbootJsp.pojo.pastebin"  parameterType="Map">
+		SELECT id,codetype,password,content,is_secret from pastebin where is_secret=0 and id &lt;= (SELECT id from pastebin where email=#{email} ORDER BY id DESC limit #{page},1 ) ORDER BY id DESC limit 10;
+	</select>
+
+	<!-- delete -->
+
+	<delete id="delete">
+		DELETE  FROM pastebin where id=#{id};
+	</delete>
+
+</mapper>

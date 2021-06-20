@@ -16,7 +16,7 @@
 
 2. 索引检索界面
 
-   ![image-20210620200610931](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20210620200610931.png)
+   ![image-20210620200610931](https://rawgithub.tim-wcx.workers.dev/WCX1024979076/image1/master/img/20210620203339.png)
 
 
 

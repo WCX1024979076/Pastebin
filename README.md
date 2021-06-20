@@ -35,7 +35,7 @@
    content:
 
    ```json
-   {"action":"insert","password":"123456","code":"echo 'Hello world!'","is_secret":0}
+{"action":"insert","password":"123456","code":"echo 'Hello world!'","codetype":"C/C++","is_secret":0}
    ```
 
    response
